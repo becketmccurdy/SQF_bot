@@ -1,0 +1,30 @@
+# --- GLOBAL SETTINGS -------------------------------------------------
+mode: sim               # sim  ➜ synthetic prices   |   live ➜ IBKR paper acct
+account_currency: USD
+log_level: INFO
+# ---------------------------------------------------------------------
+
+# --- IBKR CONNECTION (used only in live mode) ------------------------
+ib:
+  host: 127.0.0.1      # TWS or IB Gateway
+  port: 7497           # 7496 = live / 7497 = paper
+  client_id: 11
+# ---------------------------------------------------------------------
+
+# --- CONTRACTS -------------------------------------------------------
+contracts:
+  sqf:
+    symbol: QSPX
+    expiry: 203012      # Dec-2030 (first SQF)
+  spy:
+    symbol: SPY
+# ---------------------------------------------------------------------
+
+# --- STRATEGY PARAMETERS ---------------------------------------------
+z_enter: 2.0            # open position when |Z| ≥ 2
+z_exit: 1.0             # close when |Z| < 1
+window: 480             # look-back in minutes for basis mean/std
+notional_per_trade: 5000  # $ exposure on each side
+max_gross_leverage: 2.0   # × account equity
+stop_loss_pct: 0.0075     # 0.75 %
+# ---------------------------------------------------------------------
